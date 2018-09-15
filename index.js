@@ -37,20 +37,20 @@ mongoose
 
 // retrive all posts
 
-async function getPosts() {
-  const result = await Post.find({
-    category: "economic",
-    likes: { $gte: 2, $lte: 22 } //  gre
-  })
-    .limit(10)
-    .sort({ likes: -1 }) // decending order ...
-    .select({ title: 1, body: 1, likes: 1, author: 1 });
+// async function getPosts() {
+//   const result = await Post.find({
+//     category: "economic",
+//     likes: { $gte: 2, $lte: 22 } //  gre
+//   })
+//     .limit(10)
+//     .sort({ likes: -1 }) // decending order ...
+//     .select({ title: 1, body: 1, likes: 1, author: 1 });
 
-  console.log("Total posts ....", result.length);
-  console.log(result);
-}
+//   console.log("Total posts ....", result.length);
+//   console.log(result);
+// }
 
-getPosts();
+// getPosts();
 
 // simple get request
 
@@ -67,7 +67,19 @@ app.get("/post/:id/:category", (req, res) => {
 // how to get query parameter
 
 app.get("/posts/", (req, res) => {
-  res.send(req.query); // get all query like  ?name=nahid
+  // res.send(req.query); // get all query like  ?name=nahid
+  async function getPosts() {
+    const result = await Post.find({});
+    console.log("Total posts ....", result.length);
+    return result;
+  }
+
+  getPosts()
+    .then(result => {
+      console.log(result);
+      res.send(result);
+    })
+    .catch(err => console.log(err));
 });
 
 // PORT
