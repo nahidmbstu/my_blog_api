@@ -71,13 +71,12 @@ app.post("/auth/register", (req, res) => {
 
   async function createUser() {
     const user = await User.find({
-      name: req.body.name,
-      email: req.body.email,
-      phone: req.body.phone,
-      password: req.body.password
+      email: req.body.email
     });
 
-    if (user) {
+    console.log(user);
+
+    if (user.length > 0) {
       return res.send(" Already Registered ").status(200);
     }
 
@@ -110,10 +109,15 @@ app.post("/auth/login", (req, res) => {
       access_token: req.body.access_token
     });
 
+    console.log(user);
     // if not found return no access.
 
+    if (user.length < 1) {
+      return res.send(" No Registered User ").status(401);
+    }
+
     if (user[0].access_token != req.body.access_token) {
-      return res.send(" User Not Found ").status(401);
+      return res.send(" Invalid Token ").status(401);
     } else {
       return user;
     }
