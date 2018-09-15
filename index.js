@@ -60,8 +60,20 @@ app.get("/", (req, res) => {
 
 // how to get route parameter
 
-app.get("/post/:id/:category", (req, res) => {
-  res.send(req.params);
+app.get("/post/:category", (req, res) => {
+  // res.send(req.params);
+
+  async function getPostByIdAndCategory() {
+    const result = await Post.find({ category: req.params.category });
+    return result;
+  }
+
+  getPostByIdAndCategory()
+    .then(result => {
+      console.log(result);
+      res.send(result);
+    })
+    .catch(err => console.log(err));
 });
 
 // how to get query parameter
