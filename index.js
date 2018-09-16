@@ -9,6 +9,8 @@ const app = express();
 app.use(bodyParser.json()); // to support JSON-encoded bodies  api / post man
 app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies / from websites
 
+const auth = require("./middleware/Auth");
+
 // import model
 
 const Post = require("./models/Post");
@@ -77,7 +79,7 @@ app.post("/auth/register", (req, res) => {
     console.log(user);
 
     if (user.length > 0) {
-      return res.send(" Already Registered ").status(200);
+      return res.send(" Email Already Registered ").status(200);
     }
 
     const singleUser = new User({
@@ -95,8 +97,7 @@ app.post("/auth/register", (req, res) => {
 
   createUser()
     .then(result => {
-      console.log(result);
-      res.send(result);
+      res.send(" User Successfully Registered ");
     })
     .catch(err => console.log(err));
 });
@@ -106,7 +107,8 @@ app.post("/auth/login", (req, res) => {
     // find user
 
     const user = await User.find({
-      access_token: req.body.access_token
+      email: req.body.email,
+      password: req.body.password
     });
 
     console.log(user);
@@ -116,8 +118,11 @@ app.post("/auth/login", (req, res) => {
       return res.send(" No Registered User ").status(401);
     }
 
-    if (user[0].access_token != req.body.access_token) {
-      return res.send(" Invalid Token ").status(401);
+    if (
+      user[0].email != req.body.email &&
+      user[0].password != req.body.password
+    ) {
+      return res.send(" Invalid Email or Password ").status(401);
     } else {
       return user;
     }
@@ -167,7 +172,7 @@ app.get("/users", (req, res) => {
 
 // how to get query parameter
 
-app.get("/posts/", (req, res) => {
+app.get("/posts/", auth, (req, res) => {
   // res.send(req.query); // get all query like  ?name=nahid
   async function getPosts() {
     const result = await Post.find({});
