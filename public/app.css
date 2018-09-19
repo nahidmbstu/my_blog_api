@@ -1,0 +1,137 @@
+body {
+  font-family: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: rgba(0, 0, 0, 0.84);
+  line-height: 1.5;
+}
+
+a {
+  color: #1e87f0;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  margin: 0;
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+h2 {
+  margin-top: 6rem;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+b {
+  background-color: #f8fafc;
+  font-weight: normal;
+}
+
+nav {
+  text-align: center;
+  border-bottom: 1px solid #f8fafc;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline;
+}
+
+nav li a {
+  display: inline-block;
+  padding: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.hljs {
+  padding: 1rem;
+}
+
+td:first-child {
+  width: 8rem;
+}
+
+.container {
+  max-width: 48rem;
+  margin: auto;
+  padding: 1rem;
+}
+
+.hero {
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.sponsors {
+  margin-bottom: 2rem;
+  padding: 6rem 0;
+  background-color: #f8fafc;
+  text-align: center;
+}
+
+.sponsors h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.sponsors p {
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+main {
+  margin-bottom: 6rem;
+}
+
+#run-button {
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  border-width: 0;
+  border-radius: 0.25rem;
+  background-color: #1e87f0;
+  color: white;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+#run-message {
+  opacity: 0;
+  transition: all 0.25s;
+}
+
+pre {
+  /* hack */
+  background: #f8f8f8;
+}
+
+#result {
+  margin: 1.5rem 0 0;
+  height: 176px;
+  opacity: 0;
+  transition: all 0.25s;
+}
+
+footer {
+  padding: 6rem;
+  background-color: #f8fafc;
+  text-align: center;
+}
