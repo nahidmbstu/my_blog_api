@@ -1,7 +1,0 @@
-{
-    "Blog_Api" : {
-        "db_config" : {
-            "dev_db_url" : "mongodb://nahid_hasan:mbstu2018@ds245512.mlab.com:45512/blog_db"
-        }
-    }
-}
