@@ -1,5 +1,6 @@
 const TokenGenerator = require("uuid-token-generator");
 const User = require("../models/User");
+const auth = require("../middleware/Auth");
 
 module.exports = function(app) {
   app.post("/auth/register", (req, res) => {
@@ -71,7 +72,7 @@ module.exports = function(app) {
       .catch(err => console.log(err));
   });
 
-  app.get("/users", (req, res) => {
+  app.get("/users", auth, (req, res) => {
     // res.send(req.query); // get all query like  ?name=nahid
     async function getPosts() {
       const result = await User.find({});

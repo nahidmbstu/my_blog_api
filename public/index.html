@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/0.5.0/modern-normalize.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <title>Blog Api By MD NAHID HASAN</title>
+    <style>
+        body {
+            font-family: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+            color: rgba(0, 0, 0, 0.84);
+            line-height: 1.5;
+        }
+
+        a {
+            color: #1e87f0;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        h2 {
+            margin-top: 6rem;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: normal;
+        }
+
+        b {
+            background-color: #f8fafc;
+            font-weight: normal;
+        }
+
+        nav {
+            text-align: center;
+            border-bottom: 1px solid #f8fafc;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline;
+        }
+
+        nav li a {
+            display: inline-block;
+            padding: 1rem;
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hljs {
+            padding: 1rem;
+        }
+
+        td:first-child {
+            width: 8rem;
+        }
+
+        .container {
+            max-width: 48rem;
+            margin: auto;
+            padding: 1rem;
+        }
+
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .sponsors {
+            margin-bottom: 2rem;
+            padding: 6rem 0;
+            background-color: #f8fafc;
+            text-align: center;
+        }
+
+        .sponsors h3 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 2rem;
+        }
+
+        .sponsors p {
+            margin-top: 2rem;
+            margin-bottom: 0;
+        }
+
+        main {
+            margin-bottom: 6rem;
+        }
+
+        #run-button {
+            padding: .5rem 1rem;
+            margin-right: 1rem;
+            border-width: 0;
+            border-radius: .25rem;
+            background-color: #1e87f0;
+            color: white;
+            cursor: pointer;
+            transition: all .25s;
+        }
+
+        #run-message {
+            opacity: 0;
+            transition: all .25s;
+        }
+
+        pre {
+            /* hack */
+            background: #f8f8f8;
+        }
+
+        #result {
+            margin: 1.5rem 0 0;
+            height: 176px;
+            opacity: 0;
+            transition: all .25s;
+        }
+
+        footer {
+            padding: 6rem;
+            background-color: #f8fafc;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="https://github.com/nahidmbstu">GitHub</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <h1>
+                RESTful Blog Api
+            </h1>
+            <p class="subtitle">
+                <br> Created by
+                <a href="https://github.com/nahidmbstu">MD NAHID HASAN</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="sponsors">
+        <h3>sponsored by</h3>
+        <p>
+
+        </p>
+
+    </div>
+
+    <div class="container">
+        <main>
+
+            <h2>Intro</h2>
+            <p>
+                This is a Restful Api for creating user , making blog post , and get all post
+            </p>
+
+            <h2>Example</h2>
+            <p>
+                Run this code in a console or from any site:
+            </p>
+            <pre><code id="example" class="javascript">fetch('https://mysterious-basin-20490.herokuapp.com/post/economic')
+            .then(response => response.json())
+            .then(json => console.log(json))
+            </code></pre>
+
+            <h2>Resources</h2>
+            <p>
+                it comes with a set of 3 common resources:
+            </p>
+            <table class="resources">
+                <tr>
+                    <td>
+                        <a href="/posts">/posts</a>
+                    </td>
+                    <td>get posts</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="/users">/users</a>
+                    </td>
+                    <td>get users *** protected</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="/auth">/auth</a>
+                    </td>
+                    <td> for authentication </td>
+                </tr>
+
+
+
+            </table>
+            <p>
+
+                <h2>Routes</h2>
+                <p>
+                    All HTTP methods are supported.
+                </p>
+                <table>
+                    <tr>
+                        <td>GET</td>
+                        <td>
+                            <a href="/posts">/posts</a>
+                            <p> need Login </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>
+                            <a href="/posts/economic">/posts/economic</a>
+                            <p> no need Login </p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>POST</td>
+                        <td>
+                            <a href="/post/new">/posts/new</a>
+                            <p> Create a Post need Login </p>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/auth/register</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/auth/login</td>
+                    </tr>
+                    <tr>
+                        <p> For login specification mail me @ nahid.mbstu.ict@gmail.com </p>
+                    </tr>
+
+
+                    </tr>
+                </table>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div style="margin-bottom: 2rem">
+
+            </div>
+            <div>
+                Coded and built with ❤️
+                <br>Source code and CHANGELOG available on
+                <a href="https://github.com/nahidmbstu/my_blog_api">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a,
+                m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga'); ga('create', 'UA-44497010-1', 'typicode.com');
+        ga('send', 'pageview'); var trackOutboundLink = function (url) {
+            ga('send', 'event', 'outbound', 'click', url, {
+                'transport':
+                    'beacon'
+            });
+        }
+    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+    <script>
+        // Use http or https based on location.protocol
+        var example = document.getElementById('example')
+        example.textContent = example.textContent.replace('http:', location.protocol)
+
+        // Highlight result element
+        var result = document.getElementById('result')
+        hljs.highlightBlock(result)
+
+        // Run example
+        var runButton = document.getElementById('run-button')
+        runButton.onclick = function () {
+            var root = location.protocol + '//jsonplaceholder.typicode.com'
+            var runMessage = document.getElementById('run-message')
+
+            // Hide or disable things during API call
+            runButton.disabled = true
+            runMessage.style.opacity = 0
+            result.style.opacity = 0
+
+            fetch('https://mysterious-basin-20490.herokuapp.com/post/economic')
+                .then(response => response.json())
+                .then(json => {
+                    var str = JSON.stringify(json, null, '\t')
+
+                    // Format result
+                    result.innerHTML =
+                        str.replace(/\n/g, '<br/>')
+                            .replace(/\\n/g, ' ')
+                            .replace(/\t/g, '&nbsp;&nbsp;')
+
+                    hljs.highlightBlock(result);
+
+                    // Show and enable things after API call
+                    runButton.disabled = false
+                    runMessage.style.opacity = 1
+                    result.style.opacity = 1
+                })
+        }
+    </script>
+</body>
+
+</html>
